@@ -1,15 +1,3 @@
-import os
-import requests
-import json
-from dotenv import load_dotenv
-from bs4 import BeautifulSoup
-import openai
-
-# Initialize environment variables and OpenAI API configuration
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_AZURE_KEY")
-openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT")
-
 # Constants
 import os
 import requests
@@ -30,7 +18,7 @@ HEADERS = {
 }
 SYSTEM_PROMPT = """
 You are an assistant that analyzes the contents of a website and provides a short summary, 
-ignoring text that might be navigation related. Respond in markdown.
+ignoring text that might be navigation related. Respond in.
 """
 
 class Website:
@@ -60,7 +48,7 @@ class Website:
     def get_user_prompt(self):
         """Generate the user prompt based on the website's content."""
         return f"You are looking at a website titled {self.title}\n" \
-               f"The contents of this website are as follows:\nPlease provide a short summary of this website in markdown. " \
+               f"The contents of this website are as follows:\nPlease provide a short summary of this website in. " \
                "If it includes news or announcements, summarize those too.\n\n" + self.text
 
     def get_messages(self):
